@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Cut Paste</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="one">
+                    <input type="text" id="copyText" value="I am MD Hasan">
+                    <button id="copyBtn" class="btn btn-primary">Copy Text</button>
+                </div>
+                <div class="one">
+                    <input type="text" id="cutText" value="Cut me here">
+                    <button id="cutBtn" class="btn btn-primary">Cut Button</button>
+                </div>
+                <div class="one">
+                    <input type="text" id="pasteText">
+                    <button id="pasteBtn" class="btn btn-primary">Paste Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // copy section here
+        var copyText = document.getElementById('copyText');
+        var copyBtn = document.getElementById('copyBtn');
+        copyBtn.addEventListener('click' , function(){
+            navigator.clipboard.writeText(copyText.value);
+            alert("copy successfull");
+        })
+        // cut section here
+        var cutText = document.getElementById('cutText');
+        var cutBtn = document.getElementById('cutBtn');
+        cutBtn.addEventListener('click' , function(){
+            navigator.clipboard.writeText(cutText.value);
+            cutText.value='';
+        })
+        //paste text section here
+        var pasteText = document.getElementById('pasteText');
+        var pasteBtn = document.getElementById('pasteBtn');
+        pasteBtn.addEventListener('click' , function(){
+            pasteText.value='';
+            navigator.clipboard.readText()
+            .then(function(text){
+                pasteText.value=text;
+            })
+        })
+    </script>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>
